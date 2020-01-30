@@ -45,6 +45,7 @@ Route::namespace('Admin')->prefix('admin')->middleware(['auth', 'auth.admin'])->
     Route::get('/surveys/{id}/create', 'SurveyController@create');
     Route::get('/impersonate/user/{id}', 'ImpersonateController@index')->name('impersonate');
     Route::get('/surveys/{id}/view', 'SurveyController@view')->name('surveys.view');
+    Route::get('/new-survey', 'SurveyController@new')->name('surveys.new');
     Route::get('/surveys/{id}/closeSurvey', 'SurveyController@closeSurvey')->name('surveys.closeSurvey');
     Route::get('/index', 'HomeController@index')->name('index');
     Route::post('/modules/getmodules', 'ModuleController@modules')->name('modules.getmodules');

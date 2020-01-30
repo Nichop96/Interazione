@@ -31,6 +31,12 @@ class SurveyController extends Controller {
         return view('admin.surveys.index')->with(['modules' => $modules,
                     'surveys' => $surveys]);
     }
+    
+    public function new() {
+        $modules = Module::all();
+
+        return view('admin.surveys.new')->with(['modules' => $modules]);
+    }
 
     /**
      * Show the form for creating a new resource.

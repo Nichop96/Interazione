@@ -31,7 +31,7 @@
     <body>
         <!--::header part start::-->
         <header class="main_menu home_menu">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg navbar-light">
@@ -43,9 +43,12 @@
                             </button>
 
                             <div class="collapse navbar-collapse main-menu-item justify-content-end" id="navbarSupportedContent">
-                                <ul class="navbar-nav align-items-center">
+                                <ul class="navbar-nav align-items-center">                                    
                                     <li class="nav-item" active>
                                         <a class="nav-link" href="{{route('index')}}">Home</a>
+                                    </li>
+                                    <li class="nav-item" active>
+                                        <a class="nav-link font-weight-bold" href="{{route('about')}}">About</a>
                                     </li>
                                     @if (Route::has('login'))
                                     @auth

@@ -43,3 +43,7 @@
     </ul>
 </nav>
 @endsection
+
+@section('link_index')
+     <a class="navbar-brand brand-logo" href="{{ route('admin.index') }}"><img src="{{ asset('public-part/img/logos/twitter_header_photo_2.jpg')}} " alt="logo"/></a>
+@endsection

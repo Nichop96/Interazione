@@ -45,6 +45,9 @@
                             <div class="collapse navbar-collapse main-menu-item justify-content-end" id="navbarSupportedContent">
                                 <ul class="navbar-nav align-items-center">  
                                     <li class="nav-item" active>
+                                        <a class="nav-link font-weight-bold" href="{{route('index')}}">Home</a>
+                                    </li>
+                                    <li class="nav-item" active>
                                         <a class="nav-link" href="{{route('about')}}">About</a>
                                     </li>
                                     @if (Route::has('login'))
