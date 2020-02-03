@@ -34,7 +34,7 @@ Surveys
         </div> 
                   
         @foreach($modules  as $module)
-        @component('components.myCard')
+        @component('components.cardLink')
         @slot('image')
         @if(isset($module->image))
         <img src="/images/modules/{{ $module->image }}"  class='card-img-top w-100' style="max-height: 120px;" alt="Responsive image" />
@@ -44,11 +44,13 @@ Surveys
         @slot('name')
         {{ $module->name }}
         @endslot
+        
+        @slot('category')
 
-        @slot('buttons')
-        <a href="{{ url('admin/surveys/' .$module->id . '/create') }}" class="dropdown-item">
-            <button type="button" class="btn btn-outline-primary btn-sm col-12">Use as model</button>
-        </a>                   
+        @endslot 
+        
+        @slot('link')
+        {{ url('admin/surveys/' .$module->id . '/create') }}
         @endslot
         @endcomponent
         @endforeach

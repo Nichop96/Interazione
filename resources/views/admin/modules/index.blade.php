@@ -45,6 +45,10 @@ Modules
         {{ $module->name }}
         @endslot
 
+        @slot('category')
+
+        @endslot 
+        
         @slot('buttons')     
         <a href="{{ route('admin.modules.edit', $module->id) }}" class="dropdown-item">
             <button type="button" class="btn btn-outline-primary btn-sm col-12">Edit</button>

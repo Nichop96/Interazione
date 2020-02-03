@@ -37,7 +37,7 @@ Surveys
     <div class="row">
 
         @foreach($surveys  as $survey)        
-        @component('components.myCard')
+        @component('components.cardLink')
         @slot('image')
         @if(isset($survey->image))
         <img src="/images/surveys/{{ $survey->image }}"  class='card-img-top w-100' style="max-height: 120px;" alt="Responsive image" />
@@ -46,12 +46,14 @@ Surveys
 
         @slot('name')
         {{ $survey->name }}
-        @endslot               
+        @endslot   
+        
+        @slot('category')
+        {{ $survey->category }}
+        @endslot   
 
-        @slot('buttons') 
-        <a href="{{ url('user/surveys/' .$survey->id . '/create') }}" class="dropdown-item">
-            <button type="button" class="btn btn-outline-primary btn-sm col-12">{{__('indexes.complete')}}</button>
-        </a>                     
+        @slot('link') 
+        {{ url('user/surveys/' .$survey->id . '/create') }}
         @endslot
         @endcomponent 
         @endforeach        
@@ -67,7 +69,7 @@ Surveys
             <br>
         </div>
         @foreach($completedSurveys  as $completedSurvey)
-        @component('components.myCard')
+        @component('components.cardLink')
         @slot('image')
         @if(isset($completedSurvey->image))
         <img src="/images/surveys/{{ $completedSurvey->image }}"  class='card-img-top w-100' style="max-height: 120px;" alt="Responsive image" />
@@ -77,15 +79,13 @@ Surveys
         @slot('name')
         {{ $completedSurvey->name }}
         @endslot
+        
+        @slot('category')
+        {{ $completedSurvey->cate }}
+        @endslot 
 
-        @slot('description')
-        {{ $completedSurvey->description }}
-        @endslot
-
-        @slot('buttons') 
-        <a href="{{ url('user/surveys/' .$completedSurvey->completed_id . '/show') }}" class="dropdown-item">
-            <button type="button" class="btn btn-outline-success btn-sm col-12">{{__('indexes.show')}}</button>
-        </a>                     
+        @slot('link') 
+       {{ url('user/surveys/' .$completedSurvey->completed_id . '/show') }}
         @endslot
         @endcomponent           
         @endforeach
