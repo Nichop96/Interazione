@@ -41,7 +41,12 @@ Answer Survey
                             @foreach($questions as $question)                  
                             <input type="hidden" name='id{{ $loop->iteration }}' value='{{$question->answer_id}}'>
                             <div class="card border-primary mb-3">
-                                <div class="card-header">{{ $question->name }}</div>
+                                <div class="card-header">
+                                    {{ $question->name }}
+                                    <a data-toggle="modal" data-target="#ModalQuestion">
+                                        <i class="mdi mdi-comment-question-outline"></i>
+                                    </a>
+                                </div>
                                 <div class="card-body"> 
                                     @php
                                      $max = $question->max_rate;
@@ -96,7 +101,28 @@ Answer Survey
                                     </div>                                
                                 </div>
                             </div>                                   
-                            @endforeach                                   
+                            @endforeach 
+                             <div class="modal fade" id="ModalQuestion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                              
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3 class="modal-title text-primary" id="exampleModalLongTitle">Help</h3>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>
+                                                The correct answer is the green one and the one selected by the user is the blue one. If there is no blue one, it means that the answer was guessed by the user and that he selected the answer marked in green.
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>                                      
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>                              
                         <div class="tab-pane fade" id="global" role="tabpanel" aria-labelledby="global-tab">
                             <br>

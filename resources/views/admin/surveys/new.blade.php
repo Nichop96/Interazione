@@ -9,9 +9,9 @@ Surveys
 
 <div class="content-wrapper">
     <div class="mr-md-3 mr-xl-5">
-        <h1 class=" text-primary">Surveys</h1>
+        <h1 class=" text-primary">Create a new Survey</h1>
         <br>
-        <h3 class="mb-md-0">{{__('indexes.survey_create_des')}}</h3>
+        <h3 class="mb-md-0">Create a survey from a module or create it from scratch:</h3>
         <br>
     </div>
     <div class="row">        
@@ -27,7 +27,7 @@ Surveys
                                 <h4>New Survey</h4>                    
                             </div>                        
                         </div>  
-                        <h6>Create a new Survey</h6>
+                        <h6>Create a survey from scratch</h6>
                     </div>               
                 </div>
             </a>

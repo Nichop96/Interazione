@@ -64,13 +64,23 @@ class HomeController extends Controller {
             foreach ($questions as $question) {
                 if ($question->value == $question->correct_answer) {
                     $correctAnswers++;
-                }
-                $completedSurvey->score+= abs($question->value - $question->correct_answer);
+                }               
                $countQuestions++;
             }
+            $score = 0;
+            $tot = 0;
+            foreach ($questions as $question) {
+                $dist1 = abs($question->value - $question->max_rate);
+                $dist2 = abs($question->value - 1);
+                $dist_max = max($dist1, $dist2);
+                $score += $dist_max - abs($question->value - $question->correct_answer);
+                $tot += $dist_max;
+            }
             if (count($questions) != 0) {
-                $completedSurvey->score /= count($questions);
-            }      
+                $score /= $tot;
+            }
+            $score *= 100;
+            $completedSurvey->score = $score;              
         }
 
         $wrongAnswers = $countQuestions - $correctAnswers;

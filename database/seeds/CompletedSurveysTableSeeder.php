@@ -16,7 +16,7 @@ class CompletedSurveysTableSeeder extends Seeder {
         $users = User::all();
 
         foreach ($users as $user) {
-            $randMax = rand(0, 10);
+            $randMax = rand(0, 10);           
             $surveys = DB::table('surveys')->join('group_survey', 'surveys.id', '=', 'group_survey.survey_id')
                     ->join('groups', 'group_survey.group_id', '=', 'groups.id')
                     ->join('group_user', 'groups.id', '=', 'group_user.group_id')
@@ -26,14 +26,17 @@ class CompletedSurveysTableSeeder extends Seeder {
                     ->select('surveys.*')
                     ->orderBy('surveys.created_at', 'desc')
                     ->get();
+            $t = 0;
             foreach ($surveys as $survey) {
                 $rand = rand(1, 10);
+                if($user['id']==3) $rand=11;
                 if ($rand <= $randMax) {
                     CompletedSurvey::create([
                         'user_id' => $user['id'],
                         'survey_id' => $survey->id,
                     ]);
                 }
+                $t++;
             }
         }
     }

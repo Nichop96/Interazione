@@ -20,7 +20,7 @@ Create survey
                     <br>
                     <form id="repeater-form" name="bbb">                         
                         <div  class="form-group">
-                            <h5 for="aux_name" > Name </h5>
+                            <h5 for="aux_name" > Name *</h5>
                             @if(isset($module))
                             <input id="aux_name" type="text" maxlength="255" class="form-control form-control-lg {{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ (old('aux_name', $module->name ? : '' )) }}" name="aux_name" placeholder="{{$module->name}} ">
                             @else
@@ -54,7 +54,7 @@ Create survey
 
                         </div>  
                         <div class="form-group">
-                            <h5 class="col-lg-3 col-md-3 col-sm-1">Chose the category</h5>
+                            <h5 class="col-lg-3 col-md-3 col-sm-1">Chose the category *</h5>
                             <div class="row">
                                 @foreach($categories  as $category)
                                 <div class="col-lg-3 col-md-3 col-sm-1 form-check">
@@ -79,7 +79,25 @@ Create survey
                             </div>
 
                         </div>
-                            
+                        <div class="form-group">
+                            <h5 class="col-lg-12 col-md-12 col-sm-12">Select if the survey is fillable by the user *</h5>
+                            <div class="row">                                
+                                <div class="col-lg-3 col-md-3 col-sm-1 form-check">
+                                    <label class="form-check-label">
+                                       <input  type="radio" class="form-check-input sel_fillable" name="aux_fillable" id="aux_fillable1" value="1">
+                                        Open
+                                    </label>
+
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-1 form-check">
+                                    <label class="form-check-label">
+                                        <input  type="radio" class="form-check-input sel_fillable" name="aux_fillable" id="aux_fillable0" value="0" checked>
+                                        Close
+                                    </label>
+
+                                </div>
+                            </div>
+                        </div>
                          <div class="form-group">
                             <h5 for="file">Picture of the survey</h5>
                             <input type="file" class="form-control-file" name='file' form='aux_form' accept="image/png, .jpeg, .jpg, image/gif" />
@@ -169,7 +187,7 @@ Create survey
                                         <div class="item-content card-body block">
 
                                              <div class="form-group">
-                                                <h5 for="question" class="col-lg-2 control-label">Question</h5>
+                                                <h5 for="question" class="col-lg-2 control-label">Question *</h5>
                                                 <div class="col-lg-10">
                                                     <input type="text" class="form-control question"   placeholder="question" >
                                                 </div>
@@ -229,6 +247,7 @@ Create survey
                         <br>
 
                     </form>
+                    <h5 class="pull-left">Select the groups:</h5>
                     <div class="table-responsive">
                         <table class="table" id='table'>
                             <thead>
@@ -268,6 +287,11 @@ Create survey
                         </div>
                     </div>
                 </div> <!-- div di creazione modulo -->
+                <div class="row">
+                    <div class="col">
+                        <p>* Mandatory fields</p>
+                    </div>
+                </div>
                 <div name="aux">
                     <form id="aux_form" class="pt-3" action="{{ route('admin.surveys.store') }}" method="POST"  enctype="multipart/form-data">
                         @csrf 
@@ -281,6 +305,7 @@ Create survey
                         <input type='hidden' class='aux_name' name='name' id='name' />
                         <input type='hidden' class='aux_description' name='description' id='description' />
                         <input type='hidden' class='aux_category' name='category' id='category' />
+                        <input type='hidden' class='aux_fillable' name='fillable' id='fillable' />
                         <input type='hidden' name='aux_groups' id='aux_groups'/>
                         @if(isset($module))
                         <input type="hidden" name="aux_module_id" id="aux_module_id" value="{{$module->id}}"/>
@@ -452,8 +477,10 @@ Create survey
         // module attributes
         document.getElementById("name").value = document.getElementById("aux_name").value;
         document.getElementById("description").value = document.getElementById("aux_description").value;
+        var tmp = $(".sel_fillable:checked").val();        
+        document.getElementById("fillable").value = tmp;
 
-       var tmp = $(".sel_category:checked").val();
+        tmp = $(".sel_category:checked").val();
         if (!tmp) {
             tmp = null;
         }

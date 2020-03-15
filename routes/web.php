@@ -68,6 +68,8 @@ Route::namespace('User')->prefix('user')->middleware(['auth', 'auth.user'])->nam
     Route::resource('/groups', 'GroupController');
     Route::get('/index', 'HomeController@index')->name('index');
     Route::post('/surveys/create', 'SurveyController@search')->name('surveys.search');
+    Route::post('/searchcompletedSurveys', 'SurveyController@searchCompleted')->name('surveys.searchCompleted');
+    Route::get('completedSurveys', 'SurveyController@indexCompleted')->name('surveys.indexCompleted');
 });
 
 

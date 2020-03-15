@@ -6,12 +6,10 @@ Surveys
 
 @section('content')
 <!-- partial -->
-
+<script type="text/javascript" src="{{ URL::asset('js/menuCard.js') }}"></script>
 <div class="content-wrapper">
     <div class="mr-md-3 mr-xl-5">
         <h1 class=" text-primary">Surveys</h1>
-        <br>
-        <h3 class="mb-md-0">{{__('indexes.survey_create_des')}}</h3>
         <br>
     </div>
     @if(sizeof($surveys))
@@ -33,7 +31,9 @@ Surveys
                 </div>
             </a>
         </div> 
+        <?php $i= 0;?>
         @foreach($surveys  as $survey)
+        <?php $i+=1;?>
         @component('components.myCard')
         @slot('image')
         @if(isset($survey->image))
@@ -43,6 +43,19 @@ Surveys
 
         @slot('name')
         {{ $survey->name }}
+        @if($survey->fillable == true)
+        <i class="mdi mdi-lock-open-outline menu-icon"></i>
+        @else
+        <i class="mdi mdi-lock menu-icon"></i>
+        @endif 
+        @endslot
+        
+        @slot('cardId')
+        <?php echo $i; ?>
+        @endslot
+        
+        @slot('buttonId')
+        <?php echo "button".$i; ?>
         @endslot
 
         @slot('buttons')
@@ -86,4 +99,16 @@ Surveys
         }
     }          
 </script>
+<script>
+        $(".cardMenu").click(function(){
+            var id = "button"+$(this).attr('id');
+            $(".closeCard").each(function(){
+                if($(this).attr("id") != id){
+                    $("#"+$(this).attr("id")).removeClass("show");
+                }
+            });
+            $("#"+id).toggleClass('show');
+        });
+</script>
+
 @endsection

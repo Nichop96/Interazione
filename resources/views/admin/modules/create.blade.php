@@ -17,7 +17,7 @@ Create module
                     <form id="repeater-form" name="bbb">
 
                         <div  class="form-group">
-                            <h5 for="aux_name" > Name </h5>
+                            <h5 for="aux_name" > Name: * </h5>
                             <input id="aux_name" type="text" maxlength="255" class="form-control form-control-lg{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ old('name') }}" name="aux_name" placeholder="Module name">
 
                             @if ($errors->has('name'))                            
@@ -30,7 +30,7 @@ Create module
                             <br>
                         </div>
                         <div class="form-group">
-                            <h5 for="aux_description" > Description </h5>
+                            <h5 for="aux_description" > Description: </h5>
                             <input id="aux_description" type="text" maxlength="255" class="form-control form-control-lg{{ $errors->has('description') ? ' is-invalid' : '' }}" value="{{ old('description') }}" name="aux_description" placeholder="Module's description">
                             @if ($errors->has('description'))
 
@@ -43,7 +43,7 @@ Create module
 
                         </div>  
                         <div class="form-group">
-                            <h5> Choose a category </h5>
+                            <h5> Choose a category: * </h5>
                             <div class="row">
                                 @foreach($categories  as $category)
                                 <div class="col-lg-3 col-md-3 col-sm-1 form-check">
@@ -86,7 +86,7 @@ Create module
                             <div id="repeater">
                                 <!-- Repeater Heading -->
                                 <div class="repeater-heading">
-                                    <h5 class="pull-left">Questions</h5>
+                                    <h5 class="pull-left">Questions: *</h5>
                                     <br>
                                     <button class="btn btn-primary repeater-add-btn mt-3 mr-3">
                                         Add question
@@ -106,23 +106,23 @@ Create module
                                     <div class="card border-primary mb-3">
                                        
                                         <div class="item-content card-body block align-self-lg-auto">
-
-                                            <div class="form-group">
-                                                <h5 for="question" class="col-lg-5 control-label">Question</h5>
-                                                <div class="col-lg-12 col-md-9 col-sm-5">
-                                                    <input type="text" class="form-control question"   placeholder="Question" >
+                                            <div class="row">       
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <h5 for="question" class="col-lg-12 control-label">Name of the question: *</h5>                                                        
+                                                        <input type="text" class="form-control question"   placeholder="Question" >
+                                                    </div>
                                                 </div>
-                                            </div>
-
+                                              </div>      
                                             <div class="row">
                                                 <div class="col">
                                                     <h5 for="leftlabel" class="col-lg-6 control-label">Left label</h5>
-                                                    <input type="text" id="leftlabel" name="leftlabel" class="form-control leftlabel" placeholder="Low">
+                                                    <input type="text" id="leftlabel" name="leftlabel" class="form-control leftlabel" value="Low"  placeholder="Low">
                                                     
                                                 </div>
                                                 <div class="col">
                                                     <h5 for="rightlabel"  class="col-lg-6 control-label">Right label</h5>
-                                                    <input type="text" id="rightlabel" name="rightlabel" class="form-control rightlabel" placeholder="High">
+                                                    <input type="text" id="rightlabel" name="rightlabel" class="form-control rightlabel" value="High" placeholder="High">
                                                     <br>
                                                 </div>
                                             </div>                            
@@ -167,7 +167,7 @@ Create module
                         <div class="col">
                             <button class="btn btn-outline-primary" onclick="submit()">
                                 Save module 
-                            </button>
+                            </button>                            
                         </div>
                         <div class="col">
                             <a href="{{ route('admin.modules.index') }}">
@@ -175,7 +175,13 @@ Create module
                             </a>
                         </div>
                     </div>
-                </div> <!-- div di creazione modulo -->
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p>* Mandatory fields</p>
+                    </div>
+                </div>
+                <!-- div di creazione modulo -->
                 <div name="aux">
                     <form id="aux_form" class="pt-3" action="{{ route('admin.modules.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf 

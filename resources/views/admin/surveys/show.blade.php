@@ -38,7 +38,12 @@ Survey show
                             @foreach($questions as $question)                  
                             <input type="hidden" name='id{{ $loop->iteration }}' value='{{$question->answer_id}}'>
                             <div class="card border-primary mb-3">
-                                <div class="card-header">{{ $question->name }}</div>
+                                <div class="card-header">
+                                    {{ $question->name }}
+                                    <a data-toggle="modal" data-target="#ModalQuestion">
+                                        <i class="mdi mdi-comment-question-outline"></i>
+                                    </a>
+                                </div>
                                 <div class="card-body"> 
                                     @php
                                      $max = $question->max_rate;
@@ -93,7 +98,28 @@ Survey show
                                     </div>                                
                                 </div>
                             </div>                                   
-                            @endforeach                                   
+                            @endforeach 
+                            <div class="modal fade" id="ModalQuestion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                              
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3 class="modal-title text-primary" id="exampleModalLongTitle">Help</h3>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>
+                                                The correct answer is green colored.
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>                                      
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>  
                         <div class="tab-pane fade" id="statistics" role="tabpanel" aria-labelledby="statistics-tab">
                             <br>
@@ -336,34 +362,49 @@ Survey show
     yAxes: [{
     ticks: {
     beginAtZero: true
-    }
+    },
+    scaleLabel: {
+        display: true,
+        labelString: 'Number of users'
+      }
+    }],
+    xAxes: [{
+    ticks: {
+    beginAtZero: true
+    },
+    scaleLabel: {
+        display: true,
+        labelString: 'Values'
+      }
     }]
     },
-            legend: {
-            display: false
-            },
-            elements: {
-            point: {
-            radius: 0
-            }
-            },
-            tooltips: {
-            callbacks: {
-            label: function(tooltipItem, data) {
-            //get the concerned dataset
-            var dataset = data.datasets[tooltipItem.datasetIndex];
-            //calculate the total of this data set
-            var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
-            return previousValue + currentValue;
-            });
-            //get the current items value
-            var currentValue = dataset.data[tooltipItem.index];
-            //calculate the precentage based on the total and current item, also this does a rough rounding to give a whole number
-            var percentage = Math.floor(((currentValue / total) * 100) + 0.5);
-            return "#" + currentValue + "   " + percentage + "%";
-            }
-            }
-            }
+    
+    legend: {
+    display: false
+    },
+    elements: {
+    point: {
+    radius: 0
+    }
+    },
+    tooltips: {
+    callbacks: {
+    label: function(tooltipItem, data) {
+    //get the concerned dataset
+    var dataset = data.datasets[tooltipItem.datasetIndex];
+    //calculate the total of this data set
+    var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+    return previousValue + currentValue;
+    });
+    //get the current items value
+    var currentValue = dataset.data[tooltipItem.index];
+    //calculate the precentage based on the total and current item, also this does a rough rounding to give a whole number
+    var percentage = Math.floor(((currentValue / total) * 100) + 0.5);
+    return "#" + currentValue + "   " + percentage + "%";
+    }
+    }
+    }
+        
 
     };
     @foreach($questions as $question)
@@ -392,6 +433,7 @@ Survey show
     type: 'bar',
             data: data,
             options: options
+            
     });
     }
     @endforeach

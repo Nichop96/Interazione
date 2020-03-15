@@ -116,7 +116,7 @@ class SurveyController extends Controller {
         $survey->name = $request['name'];
         $survey->description = $request['description'];
         $survey->category_id = $request['category_id'];
-        $survey->fillable = false;
+        $survey->fillable = $request['fillable'];
 
         // gestisco l'immagine
         if ($file = $request->file('file')) {
@@ -399,13 +399,26 @@ class SurveyController extends Controller {
                             ->distinct('questions.id')
                             ->select('questions.*', 'answers.value as value', 'answers.id as answer_id')
                             ->orderBy('questions.id', 'asc')->get();
-            $score = 0;
+            /*$score = 0;
             foreach ($questions_users as $question_user) {
                 $score += abs($question_user->value - $question_user->correct_answer);
             }
             if (count($questions_users)) {
                 $score /= count($questions_users);
+            }*/
+            $score = 0;
+            $tot = 0;
+            foreach ($questions_users as $question_user) {
+                $dist1 = abs($question_user->value - $question_user->max_rate);
+                $dist2 = abs($question_user->value - 1);
+                $dist_max = max($dist1, $dist2);
+                $score += $dist_max - abs($question_user->value - $question_user->correct_answer);
+                $tot += $dist_max;
             }
+            if (count($questions_users) != 0) {
+                $score /= $tot;
+            }
+            $score *= 100;
             foreach ($users as $user) {
                 if ($user->completed_id == $completedSurvey->id)
                     $user->score = number_format($score, 2);
@@ -493,12 +506,18 @@ class SurveyController extends Controller {
         $wrongAnswers = count($questions) - $correctAnswers;
 
         $score = 0;
+        $tot = 0;
         foreach ($questions as $question) {
-            $score += abs($question->value - $question->correct_answer);
+            $dist1 = abs($question->value - $question->max_rate);
+            $dist2 = abs($question->value - 1);
+            $dist_max = max($dist1, $dist2);
+            $score += $dist_max - abs($question->value - $question->correct_answer);
+            $tot += $dist_max;
         }
-        if (count($questions)) {
-            $score /= count($questions);
+        if (count($questions) != 0) {
+            $score /= $tot;
         }
+        $score *= 100;
         return view('admin.surveys.view')->with(['completedSurvey' => $completedSurvey,
                     'questions' => $questions,
                     'wrongAnswers' => $wrongAnswers,

@@ -25,6 +25,7 @@ class GroupsSurveysTableSeeder extends Seeder {
         $surveys[6]->groups()->attach($groups[0]);
         $surveys[7]->groups()->attach($groups[0]);
         $surveys[8]->groups()->attach($groups[8]);
+        $surveys[9]->groups()->attach($groups[0]);
     }
 
 }

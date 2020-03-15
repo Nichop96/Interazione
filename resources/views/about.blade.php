@@ -26,6 +26,8 @@
         <link rel="stylesheet" href="{{asset('public-part/css/slick.css')}}">
         <!-- style CSS -->
         <link rel="stylesheet" href="{{asset('public-part/css/style_about.css')}}">
+        
+        <link rel="stylesheet" href="{{asset('public-part/css/flag.css')}}">
     </head>
 
     <body>
@@ -43,30 +45,33 @@
                             </button>
 
                             <div class="collapse navbar-collapse main-menu-item justify-content-end" id="navbarSupportedContent">
-                                <ul class="navbar-nav align-items-center">                                    
+                                <ul class="navbar-nav align-items-center">  
                                     <li class="nav-item" active>
                                         <a class="nav-link" href="{{route('index')}}">Home</a>
                                     </li>
                                     <li class="nav-item" active>
-                                        <a class="nav-link font-weight-bold" href="{{route('about')}}">About</a>
+                                        <a class="nav-link font-weight-bold text-primary" href="{{route('about')}}">About</a>
                                     </li>
                                     @if (Route::has('login'))
                                     @auth
                                     @hasrole('admin')
-                                    <a class="btn_1" href="{{ route('admin.index') }}">Dashboard</a>
+                                    <a class="btn_1  mr-5" href="{{ route('admin.index') }}">Dashboard</a>
                                     @endhasrole
                                     @hasrole('user')
-                                    <a class="btn_1" href="{{ route('user.index') }}">Dashboard</a>
+                                    <a class="btn_1 mr-5" href="{{ route('user.index') }}">Dashboard</a>
                                     @endhasrole                        
                                     @else
                                     <a class="btn_1" href="{{ route('login') }}">Login</a>
+
                                     @if (Route::has('register'))
-                                    <a class="btn_1" href="{{ route('register') }}">Register</a>
+                                    <a class="btn_1 mr-5" href="{{ route('register') }}">Register</a>
                                     @endif
                                     @endauth
+
                                     @endif
-                                    <li><a href="{{ url('locale/en') }}" ><p class=" ml-2 mr-2 mt-2 text-info">ENG</p></a></li>
-                                    <li><a href="{{ url('locale/it') }}" ><p class="mr-2 mt-2 text-info">ITA</p></a></li>
+
+                                    <li><a href="{{ url('locale/it') }}" ><i class="italy flag"></i></li>
+                                    <li><a href="{{ url('locale/en') }}" ><i class="uk flag"></i></li>
                                 </ul>
                             </div>
                         </nav>
@@ -279,13 +284,7 @@
                     <div class="row align-items-center">
                         <p class="footer-text m-0 col-lg-8 col-md-12">
                             Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="{{asset('index')}}" target="_blank">ORC</a>
-                        </p>
-                        <div class="col-lg-4 col-md-12 text-center text-lg-right footer-social">
-                            <a href="#"><i class="ti-facebook"></i></a>
-                            <a href="#"> <i class="ti-twitter"></i> </a>
-                            <a href="#"><i class="ti-instagram"></i></a>
-                            <a href="#"><i class="ti-skype"></i></a>
-                        </div>
+                        </p>                        
                     </div>
                 </div>
             </div>

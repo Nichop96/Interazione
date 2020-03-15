@@ -29,7 +29,7 @@ class SurveyController extends Controller {
         $ids = array();
         foreach ($completedSurveys as $s) {
             array_push($ids, $s->id);
-        }
+        }  
         $surveys = DB::table('surveys')->join('group_survey', 'surveys.id', '=', 'group_survey.survey_id')
                 ->join('groups', 'group_survey.group_id', '=', 'groups.id')
                 ->join('group_user', 'groups.id', '=', 'group_user.group_id')
@@ -41,11 +41,26 @@ class SurveyController extends Controller {
                 ->select('surveys.*','categories.name as category')
                 ->orderBy('surveys.created_at', 'desc')
                 ->get();
+        return view('user.surveys.index')->with(['surveys' => $surveys]);
+    }
+    
+    public function indexCompleted() {
+        $completedSurveys = DB::table('completed_surveys')
+                ->join('surveys', 'completed_surveys.survey_id', '=', 'surveys.id')
+                ->join('categories','surveys.category_id','categories.id')
+                ->where('completed_surveys.user_id', '=', Auth::id())
+                ->select('surveys.*', 'completed_surveys.id as completed_id','categories.name as cate')
+                ->orderBy('completed_surveys.created_at', 'desc')
+                ->get();
 
-        return view('user.surveys.index')->with(['surveys' => $surveys,
+        $ids = array();
+        foreach ($completedSurveys as $s) {
+            array_push($ids, $s->id);
+        }     
+
+        return view('user.surveys.indexCompleted')->with([
                     'completedSurveys' => $completedSurveys]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -103,12 +118,18 @@ class SurveyController extends Controller {
         $wrongAnswers = count($questions) - $correctAnswers;
 
         $score = 0;
+        $tot = 0;
         foreach ($questions as $question) {
-            $score += abs($question->value - $question->correct_answer);
+            $dist1 = abs($question->value - $question->max_rate);
+            $dist2 = abs($question->value - 1);
+            $dist_max = max($dist1, $dist2);
+            $score += $dist_max - abs($question->value - $question->correct_answer);
+            $tot += $dist_max;
         }
         if (count($questions) != 0) {
-            $score /= count($questions);
+            $score /= $tot;
         }
+        $score *= 100;
         return view('user.surveys.show')->with(['completedSurvey' => $completedSurvey,
                     'questions' => $questions,
                     'wrongAnswers' => $wrongAnswers,
@@ -118,6 +139,7 @@ class SurveyController extends Controller {
     }
 
     public function search(Request $request) {
+
         $word = $request['search'];
         $completedSurveys = DB::table('completed_surveys')
                 ->join('surveys', 'completed_surveys.survey_id', '=', 'surveys.id')
@@ -145,7 +167,7 @@ class SurveyController extends Controller {
                 ->where([['users.id', '=', Auth::id()], ['surveys.fillable', '=', '1'],['surveys.name','like',"%$word%"]])
                 ->orWhere([['users.id', '=', Auth::id()], ['surveys.fillable', '=', '1'],['categories.name','like',"%$word%"]])
                 ->distinct('surveys.id')
-                ->select('surveys.*')
+                ->select('surveys.*','categories.name as category')
                 ->orderBy('surveys.created_at', 'desc')
                 ->get();
         $surveys = array();        
@@ -162,8 +184,58 @@ class SurveyController extends Controller {
                 array_push($surveys, $t);
             }
         }
-        return view('user.surveys.index')->with(['surveys' => $surveys,
-                    'completedSurveys' => $completedSurveys]);
+        return view('user.surveys.index')->with([
+                'surveys' => $surveys]);
+    }
+    
+    public function searchCompleted(Request $request) {
+
+        $word = $request['search'];
+        $completedSurveys = DB::table('completed_surveys')
+                ->join('surveys', 'completed_surveys.survey_id', '=', 'surveys.id')
+                ->join('categories','surveys.category_id','categories.id')
+                ->where([['completed_surveys.user_id', '=', Auth::id()],['surveys.name','like',"%$word%"]])
+                ->orWhere([['completed_surveys.user_id', '=', Auth::id()],['categories.name','like',"%$word%"]])
+                ->select('surveys.*', 'completed_surveys.id as completed_id','categories.name as cate')
+                ->orderBy('completed_surveys.created_at', 'desc')
+                ->get();        
+        $completedSurveysTotal = DB::table('completed_surveys')
+                ->join('surveys', 'completed_surveys.survey_id', '=', 'surveys.id')
+                ->where('completed_surveys.user_id', '=', Auth::id())
+                ->select('surveys.*', 'completed_surveys.id as completed_id')
+                ->orderBy('completed_surveys.created_at', 'desc')
+                ->get();
+        $ids = array();
+        foreach ($completedSurveysTotal as $s) {
+            array_push($ids, $s->id);
+        }
+        $surveysT = DB::table('surveys')->join('group_survey', 'surveys.id', '=', 'group_survey.survey_id')
+                ->join('groups', 'group_survey.group_id', '=', 'groups.id')
+                ->join('group_user', 'groups.id', '=', 'group_user.group_id')
+                ->join('users', 'group_user.user_id', '=', 'users.id')
+                ->join('categories','surveys.category_id','categories.id')
+                ->where([['users.id', '=', Auth::id()], ['surveys.fillable', '=', '1'],['surveys.name','like',"%$word%"]])
+                ->orWhere([['users.id', '=', Auth::id()], ['surveys.fillable', '=', '1'],['categories.name','like',"%$word%"]])
+                ->distinct('surveys.id')
+                ->select('surveys.*','categories.name as category')
+                ->orderBy('surveys.created_at', 'desc')
+                ->get();
+        $surveys = array();        
+        foreach($surveysT as $t) {
+            $found = false;
+            foreach ($completedSurveysTotal as $s) {
+                if($t->id==$s->id)
+                {
+                    $found = true;
+                }                
+            }
+            if(!$found)
+            {
+                array_push($surveys, $t);
+            }
+        }
+        return view('user.surveys.indexCompleted')->with([
+                'completedSurveys' => $completedSurveys]);
     }
 
 }

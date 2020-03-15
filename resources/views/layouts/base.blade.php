@@ -35,10 +35,10 @@
                     </div>  
                 </div>
                 <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-                    <ul class="navbar-nav mr-lg-4 w-100">
-
-                    </ul>
-                    <ul class="navbar-nav navbar-nav-right">
+                    <ul class="navbar-nav mr-lg-4 w-100">                        
+                        @yield('search-bar')
+                      </ul>
+                      <ul class="navbar-nav navbar-nav-right">
                         @impersonate                        
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('admin.impersonate.destroy')}}">
@@ -67,8 +67,9 @@
                                 </form>                                
                             </div>                         
                         </li>
+                        
                         @yield('flags')
-
+                        
                     </ul>
                     <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
                         <span class="mdi mdi-menu"></span>

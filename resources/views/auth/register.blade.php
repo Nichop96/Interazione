@@ -23,7 +23,7 @@
             <div class="container-fluid page-body-wrapper full-page-wrapper">
                 <div class="content-wrapper d-flex align-items-center auth px-0">
                     <div class="row w-100 mx-0">
-                        <div class="col-lg-4 mx-auto">
+                        <div class="col-lg-5 mx-auto">
                             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
                                 <div class="brand-logo">
                                     <center> 
@@ -34,20 +34,25 @@
                                 </div>
                                 <form method="POST" id="myform" action="{{ route('register') }}">
                                     @csrf
-
-                                    <h4>{{__('register.new')}}</h4>
-                                    <h6 class="font-weight-light">{{__('register.sign_up')}}</h6>
+                                    
+                                    <div class="form-group">
+                                        <h4>{{__('register.new')}}</h4>
+                                        <h6 class="font-weight-light">{{__('register.sign_up')}}</h6>
+                                    </div>
+                                    
                                     <form class="pt-3" action="{{ route('register') }}" method="POST">
                                         @csrf 
-                                        <div class="form-group">
+                                        <div class="form-group">           
+                                            <h5>{{__('register.name')}}: *</h5>                                                                                     
                                             <input type="text" class="form-control form-control-lg{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ old('name') }}" name="name" placeholder="{{__('register.name')}}" required>
                                             @if ($errors->has('name'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('name') }}</strong>
-                                            </span>
+                                            </span>                                               
                                             @endif
                                         </div>
                                         <div class="form-group">
+                                            <h5>{{__('register.surname')}}: *</h5>   
                                             <input type="text" class="form-control form-control-lg{{ $errors->has('surname') ? ' is-invalid' : '' }}" value="{{ old('surname') }}" name="surname"  placeholder="{{__('register.surname')}}" required>
                                             @if ($errors->has('surname'))
                                             <span class="invalid-feedback" role="alert">
@@ -56,6 +61,7 @@
                                             @endif
                                         </div>
                                         <div class="form-group">
+                                            <h5>Email: *</h5>  
                                             <input id="email" type="email" class="form-control form-control-lg{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" name="email" placeholder="Email" required>
                                             @if ($errors->has('email'))
                                             <span class="invalid-feedback" role="alert">
@@ -67,7 +73,9 @@
                                             </span>
                                         </div>
                                         <div class="form-group">
+                                            <h5>Birth date: *</h5>  
                                             <input id="bday" type="date" class="form-control form-control-lg{{ $errors->has('birth_date') ? ' is-invalid' : '' }}" value="{{ old('birth_date') }}" name="birth_date" required>
+                                            <h6 class="font-weight-light">Minimo 16 anni</h6>
                                             @if ($errors->has('birth_date'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('birth_date') }}</strong>
@@ -78,6 +86,7 @@
                                             </span>
                                         </div>
                                         <div class="form-group">
+                                            <h5>{{__('register.username')}}: *</h5>  
                                             <input type="text" class="form-control form-control-lg{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" placeholder="{{__('register.username')}}" required>
                                             @if ($errors->has('username'))
                                             <span class="invalid-feedback" role="alert">
@@ -86,14 +95,18 @@
                                             @endif
                                         </div>
                                         <div class="form-group">
+                                            <h5>{{__('register.password')}}: *</h5> 
                                             <input type="password" class="form-control form-control-lg{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" value="{{ old('password') }}" placeholder="{{__('register.password')}}" required>
+                                            <h6 class="font-weight-light">Almeno 8 caratteri</h6>
                                             @if ($errors->has('password'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('password') }}</strong>
                                             </span>
+                                            
                                             @endif
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group">                                            
+                                            <h5>{{__('register.confirm_pass')}}: *</h5> 
                                             <input type="password" class="form-control form-control-lg{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="{{__('register.confirm_pass')}}" required>
                                             @if ($errors->has('password_confirmation'))
                                             <span class="invalid-feedback" role="alert">
@@ -109,7 +122,7 @@
                                                 </label>
                                             </div>
                                         </div>-->
-
+                                         
                                         <div class="form-group">
 
                                             <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">
@@ -117,6 +130,7 @@
                                             </button>
 
                                         </div>
+                                        <h6 class="font-weight-light">* Campi obbligatori</h6>
 
                                         <div class="text-center mt-4 font-weight-light">
                                             {{__('register.already')}}<a href="{{asset('login')}}" class="text-primary">Login</a>
@@ -147,10 +161,10 @@ function checkDate() {
     var currentYear = data.getFullYear();
     var year = dateControl.getFullYear();
 
-    if ((currentYear - year) < 15) {
-        $('#dateInvalid').html('You have to be 15 or more.');
+    if ((currentYear - year) < 16) {
+        $('#dateInvalid').html('You have to be 16 or more.');
     }
-    return ((currentYear - year) >= 15);
+    return ((currentYear - year) >= 16);
 }
  function validateEmail() {
      $('#emailInvalid').html('');

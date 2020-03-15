@@ -1,8 +1,10 @@
-<div class="col-lg-3 col-md-3 col-sm-1 grid-margin stretch-card" >            
-    <div class="card border-secondary mb-3" style= "cursor:pointer;">
+
+<div class="col-lg-3 col-md-3 col-sm-1 grid-margin stretch-card" >       
+    <div id="{{ $cardId }}" class="card border-secondary mb-3 cardMenu" style= "cursor:pointer;" >
         <style>
             div.card:hover  {color: blue; border-width:3px !important; border-color: red;}
         </style>
+
         <div height="120px">
             {{$image}}            
         </div>
@@ -14,12 +16,12 @@
                 </div>
                 <div class="col-2">
 
-                    <div class="btn-group">
+                    <div id="{{ $buttonId }}" class="btn-group">
                         <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="mdi mdi-menu text-primary menu-icon " style="font-size:1.5em;"></i>
                         </a>
 
-                        <div class="dropdown-menu" >
+                        <div class="dropdown-menu closeCard">
                             {{$buttons}}                            
                         </div>
                     </div>
@@ -28,3 +30,6 @@
         </div>
     </div>
 </div>
+
+
+        

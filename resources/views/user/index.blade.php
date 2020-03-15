@@ -49,6 +49,7 @@
             </div>
         </div>
     </div>
+    @if($correctAnswers!= 0 || $wrongAnswers!=0)
     <div class="row">
         <div class="col-lg-6 grid-margin stretch-card">
             <div class="card border-primary mb-3">
@@ -69,12 +70,52 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card border-primary mb-3">
               <div class="card-body">
-                <h4>{{__('indexes.scores_compl')}}</h4>
+                <h4>
+                    {{__('indexes.scores_compl')}}
+                    <a data-toggle="modal" data-target="#ModalCenter">
+                        <i class="mdi mdi-comment-question-outline"></i>
+                    </a>
+                </h4>
                 <canvas id="areaChart"></canvas>
               </div>
             </div>
           </div>
+        <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                              
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title text-primary" id="exampleModalLongTitle">Help</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            This graph shows the score of the surveys completed by the user. On the x axes, there are the scores.
+                            On the y axes, there are the name of the surveys. 
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>                                      
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    @else
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card border-primary mb-3">
+          <div class="card-body">
+            <h4>
+                Rispondi ad almeno un sondaggio per visualizzare le tue statistiche
+                
+            </h4>
+            <img class="col-sm-6" src="{{asset('/images/surveys/default.jpg')}}" alt="default"> 
+          </div>
+        </div>
+    </div>
+    @endif
 </div>
 <script>
  $(function () {
@@ -222,6 +263,28 @@
       filler: {
         propagate: true
       }
+    },
+    scales: {
+    yAxes: [{
+    ticks: {
+    beginAtZero: true
+    },
+    scaleLabel: {
+        display: true,
+        labelString: 'Scores',
+        fontSize: 16
+      }
+    }],
+    xAxes: [{
+    ticks: {
+    beginAtZero: true
+    },
+    scaleLabel: {
+        display: true,
+        labelString: 'Surveys',
+        fontSize: 16
+      }
+    }]
     }
   }
   

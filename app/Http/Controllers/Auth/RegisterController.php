@@ -29,7 +29,7 @@ use RegistersUsers;
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/user/index';
 
     /**
      * Create a new controller instance.
@@ -77,7 +77,7 @@ use RegistersUsers;
         $user->roles()->attach($role);
         
         // automatic insert into the public group
-        $public = Group::where('name','public')->first();
+        $public = Group::where('name','Pubblico')->first();
         $user->groups()->attach($public['id']);
             
         return $user;

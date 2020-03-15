@@ -12,27 +12,27 @@ class CategoriesTableSeeder extends Seeder {
      */
     public function run() {
         Category::create([
-                    'name' => 'Wine',                    
+                    'name' => 'Vino',                 //Wine              
         ]);
         
        Category::create([
-                    'name' => 'Coffee',                    
+                    'name' => 'Caffe',             //Coffee       
         ]);
        
        Category::create([
-                    'name' => 'Cheese',                    
+                    'name' => 'Formaggio',             //Cheese       
         ]);
        
        Category::create([
-                    'name' => 'Perfume',                    
+                    'name' => 'Profumo',            //Perfume        
         ]);
        
        Category::create([
-                    'name' => 'Tissue',                    
+                    'name' => 'Tessuto',             //Tissue       
         ]);
        
        Category::create([
-                    'name' => 'Music',                    
+                    'name' => 'Musica',              //Music      
         ]);
     }
 

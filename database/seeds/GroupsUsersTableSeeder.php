@@ -16,13 +16,13 @@ class GroupsUsersTableSeeder extends Seeder {
         $groups = Group::all();
         $users = User::all();
         foreach ($groups as $group) {
-            if ($group['name'] == 'Public') {
+            if ($group['name'] == 'Pubblico') {
                 foreach ($users as $user) {
                     $group->users()->attach($user['id']);
                 }
             }
             else {
-                $randMax = rand(2,5);
+                $randMax = rand(5,9);
                 foreach ($users as $user) {
                     $rand = rand(1,10);
                     if($rand <= $randMax){

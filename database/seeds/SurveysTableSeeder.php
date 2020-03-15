@@ -12,12 +12,18 @@ class SurveysTableSeeder extends Seeder {
      * @return void
      */
     public function run() {
-         $wineCategory = Category::where('name', 'Wine')->pluck('id')->first();
+        /*$wineCategory = Category::where('name', 'Wine')->pluck('id')->first();
         $coffeeCategory = Category::where('name', 'Coffee')->pluck('id')->first();
         $perfumeCategory = Category::where('name', 'Perfume')->pluck('id')->first();
         $musicCategory = Category::where('name', 'Music')->pluck('id')->first();
         $cheeseCategory = Category::where('name', 'Cheese')->pluck('id')->first();
-        $tissueCategory = Category::where('name', 'Tissue')->pluck('id')->first();
+        $tissueCategory = Category::where('name', 'Tissue')->pluck('id')->first();*/
+        $wineCategory = Category::where('name', 'Vino')->pluck('id')->first();
+        $coffeeCategory = Category::where('name', 'Caffe')->pluck('id')->first();
+        $perfumeCategory = Category::where('name', 'Profumo')->pluck('id')->first();
+        $musicCategory = Category::where('name', 'Musica')->pluck('id')->first();
+        $cheeseCategory = Category::where('name', 'Formaggio')->pluck('id')->first();
+        $tissueCategory = Category::where('name', 'Tessuto')->pluck('id')->first();
 
         Survey::create([
             'name' => 'Grana Padano Riserva 24 m',
@@ -33,7 +39,7 @@ class SurveysTableSeeder extends Seeder {
             'description' => 'Bassanese: Griffone 0.75, session: 2-06-2019',
             
             'category_id' => $wineCategory,
-            'fillable' => 0,
+            'fillable' => 1,
             'image' => 'vino.jpg'
         ]);
 
@@ -51,7 +57,7 @@ class SurveysTableSeeder extends Seeder {
             'description' => 'Moet & Chandon: Imperial Brut 0.75, session: 13-01-2019',
             
             'category_id' => $wineCategory,
-            'fillable' => 0,
+            'fillable' => 1,
             'image' => 'moet.jpg'
         ]);
 
@@ -78,7 +84,7 @@ class SurveysTableSeeder extends Seeder {
             'description' => 'The Simpson: The Yellow Album',
             
             'category_id' => $musicCategory,
-            'fillable' => 0,
+            'fillable' => 1,
             'image' => 'simpson.jpg'
         ]);
         
@@ -96,8 +102,17 @@ class SurveysTableSeeder extends Seeder {
             'description' => 'Persian Carpet Tabriz',
             
             'category_id' => $tissueCategory,
-            'fillable' => 1,
+            'fillable' => 0,
             'image' => 'default.jpg'
+        ]);
+        
+        Survey::create([
+            'name' => 'Ca del Bosco',
+            'description' => 'Ca del bosco 2019',
+            
+            'category_id' => $wineCategory,
+            'fillable' => 1,
+            'image' => 'vino.jpg'
         ]);
     }
 

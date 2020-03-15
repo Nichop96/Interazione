@@ -10,8 +10,6 @@ Modules
 <div class="content-wrapper">
     <div class="mr-md-3 mr-xl-5">
         <h1 class=" text-primary">Modules</h1>
-        <br>
-        <h3 class="mb-md-0">Use an old module or create a new one: </h3>
     </div>
     <br>
     <div class="row">
@@ -32,8 +30,9 @@ Modules
                 </div>
             </a>
         </div>  
-
+        <?php $i= 0;?>
         @foreach($modules  as $module)
+        <?php $i+=1;?>
         @component('components.myCard')
         @slot('image')
         @if(isset($module->image))
@@ -43,6 +42,14 @@ Modules
 
         @slot('name')
         {{ $module->name }}
+        @endslot
+        
+        @slot('cardId')
+        <?php echo $i; ?>
+        @endslot
+        
+        @slot('buttonId')
+        <?php echo "button".$i; ?>
         @endslot
 
         @slot('category')

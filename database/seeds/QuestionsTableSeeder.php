@@ -14,7 +14,7 @@ class QuestionsTableSeeder extends Seeder
     {
         $maxrate = 5;
         
-        Question::create([
+        /* Question::create([
             'name' => 'Clarity',
             'label_left' => 'Low clear',  
             'label_right' => 'Very clear',
@@ -302,6 +302,296 @@ class QuestionsTableSeeder extends Seeder
             'label_right' => 'High',
             'max_rate' => $maxrate, 
             'correct_answer' => rand(1,$maxrate),
+        ]);*/
+        
+        Question::create([
+            'name' => 'Chiarezza',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);
+        
+        Question::create([
+            'name' => 'Effervescenza',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate,
+            'correct_answer' => rand(1,$maxrate),
+        ]);
+        
+        Question::create([
+            'name' => 'Fluidità',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);
+        
+        Question::create([
+            'name' => 'Balsamicità',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);
+        
+        Question::create([
+            'name' => 'Fruttatezza',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);
+        
+        Question::create([
+            'name' => 'Florealità',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);
+        
+        Question::create([
+            'name' => 'Legnosita',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);
+        
+        Question::create([
+            'name' => 'Speziativita',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);
+        
+        Question::create([
+            'name' => 'Contenuto di zucchero',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);
+        
+        Question::create([
+            'name' => 'Contenuto alcolemico',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);
+        
+        Question::create([
+            'name' => 'Strutturatezza',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);
+        
+        Question::create([
+            'name' => 'Acidita',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);
+        
+        
+        Question::create([
+            'name' => 'Gustosita',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);
+        
+        
+        Question::create([
+            'name' => 'Persistenza',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);
+        
+        Question::create([
+            'name' => 'Sviluppo',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);
+        
+        Question::create([
+            'name' => 'Giallezza',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
         ]);  
+        
+        Question::create([
+            'name' => 'Viscosita',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);  
+        
+        Question::create([
+            'name' => 'Armonia',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);  
+        
+        Question::create([
+            'name' => 'Intensita',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);  
+        
+        Question::create([
+            'name' => 'Qualita',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]); 
+        
+        Question::create([
+            'name' => 'Intensita del colore',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);  
+        
+        Question::create([
+            'name' => 'Cremosita',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);  
+        
+        Question::create([
+            'name' => 'Burrosita',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);  
+        
+        Question::create([
+            'name' => 'Salatezza',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);  
+        
+        Question::create([
+            'name' => 'Acidita',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);  
+        
+        Question::create([
+            'name' => 'Granulosita',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);  
+        
+        Question::create([
+            'name' => 'Durezza',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);  
+        
+        Question::create([
+            'name' => 'Morbidezza',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);  
+        
+        Question::create([
+            'name' => 'Profumatezza',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]); 
+        
+        Question::create([
+            'name' => 'Imbottitura',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);  
+        
+        Question::create([
+            'name' => 'Rivestimento',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);  
+        
+        Question::create([
+            'name' => 'Orecchiabilita',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);  
+        
+        Question::create([
+            'name' => 'Melodia',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);  
+        
+        Question::create([
+            'name' => 'Armonia',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);  
+        
+        Question::create([
+            'name' => 'Ritmo',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);  
+        
+        Question::create([
+            'name' => 'Sensazioni positive',
+            'label_left' => 'Basso',  
+            'label_right' => 'Alto',
+            'max_rate' => $maxrate, 
+            'correct_answer' => rand(1,$maxrate),
+        ]);
     }
 }

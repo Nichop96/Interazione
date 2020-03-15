@@ -1,6 +1,9 @@
 <div class="col-lg-3 col-md-3 col-sm-1 grid-margin stretch-card">
+    <style>
+        div.cardM:hover  {color: blue; border-width:3px !important; border-color: red;}
+    </style>
     <a href="{{ $link }}">
-        <div class="card border-primary mb-3">
+        <div class="card border-primary mb-3 cardM">
             <div height="120px">
               {{$image}} 
             </div>
