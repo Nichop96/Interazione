@@ -15,7 +15,7 @@ Edit module
                     <form id="repeater-form" name="bbb">
 
                         <div  class="form-group">
-                            <h5 for="aux_name" > Name </h5>
+                            <h5 for="aux_name" > Name *</h5>
                             <input id="aux_name" type="text" class="form-control form-control-lg {{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ old('aux_name', $module->name ? : '' ) }}" name="aux_name" placeholder="{{$module->name}} ">
                             <span id="nameNull" class="text-danger">                                
                             </span>
@@ -41,7 +41,7 @@ Edit module
 
                         </div>  
                         <div class="form-group">
-                            <h5>Chose a category</h5>
+                            <h5>Chose a category *</h5>
                             <div class="row">
                                 @foreach($categories  as $category)
                                 <div class="col-lg-3 col-md-3 col-sm-1 form-check">
@@ -133,7 +133,7 @@ Edit module
                             <div id="repeater">
                                 <!-- Repeater Heading -->
                                 <div class="repeater-heading">
-                                    <h5 class="pull-left">Questions</h5>
+                                    <h5 class="pull-left">Questions *</h5>
                                     <br>
                                     <button class="btn btn-primary repeater-add-btn mt-3 mr-3">
                                         Add question
@@ -226,6 +226,11 @@ Edit module
                         </div>
                     </div>
                 </div> <!-- div di creazione modulo -->
+                <div class="row">
+                    <div class="col">
+                        <p>* Mandatory fields</p>
+                    </div>
+                </div>
                 <div name="aux">
                     <form id="aux_form" class="pt-3" action="{{ route('admin.modules.update', ['module' => $module->id]) }}" method="POST" enctype="multipart/form-data">
                         @csrf 
