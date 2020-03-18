@@ -102,7 +102,7 @@ Survey review
                                         </div>
                                         <div class="modal-body">
                                             <p>
-                                                The correct answer is the green one and the one selected by the user is the blue one. If there is no blue one, it means that the answer was guessed by the user and that he selected the answer marked in green.
+                                                {{__('indexes.help_risp_corretta')}}
                                             </p>
                                         </div>
                                         <div class="modal-footer">
@@ -188,8 +188,8 @@ Survey review
             }],
                     // These labels appear in the legend and in the tooltips when hovering different arcs
                     labels: [
-                            'Correct',
-                            'Wrong',
+                            '{{__('indexes.correct')}}',
+                            '{{__("indexes.wrong")}}',
                     ]
             };
             var doughnutPieOptions = {

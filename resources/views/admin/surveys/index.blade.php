@@ -42,12 +42,13 @@ Surveys
         @endslot
 
         @slot('name')
-        {{ $survey->name }}
         @if($survey->fillable == true)
-        <i class="mdi mdi-lock-open-outline menu-icon"></i>
+        <i class="mdi mdi-lock-open-outline  text-primary md-5"></i>
         @else
-        <i class="mdi mdi-lock menu-icon"></i>
+        <i class="mdi mdi-lock menu-icon text-primary md-5"></i>
         @endif 
+        {{ $survey->name }}
+        
         @endslot
         
         @slot('cardId')

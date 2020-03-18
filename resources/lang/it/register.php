@@ -11,5 +11,6 @@ return [
     'confirm_pass' => 'Conferma password',
     'already' => 'Hai già un account? ',
     'sign' => 'REGISTRATI',
-    
+    'controllo_eta' => 'Devi avere almeno 16 anni.',
+    'email_incorretta' => 'Il formato dea mail non è corretta',
 ];

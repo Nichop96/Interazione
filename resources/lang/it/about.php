@@ -2,6 +2,7 @@
 
 return [
     'about' => 'Chi siamo',
+    'register' => 'Register',
     'we_are' => 'Noi siamo tre studenti di ingegneria informatica presso l\' Università
                                 degli studi di Brescia. Questo è il nostro progetto 
                                del corso di Programmazione Web.',

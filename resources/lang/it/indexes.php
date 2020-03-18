@@ -5,13 +5,24 @@ return [
     'welcome' => 'Benvenuto nella tua dashboard',
     'modules' => 'Moduli',
     'surveys' => 'Sondaggi',
+    'new_surveys' => 'Sondaggi nuovi',
+    'completed_surveys' => 'Sondaggi completati',
     'users' => 'Utenti',
     'groups' => 'Gruppi',
+    'help_risp_corretta' => 'La risposta corretta è quella colorata di verde mentre quella selezionata dall\'utente 
+        e\' colorata di blu. Se non c\'e\' la risposta segnata di blu significa che l\'utente ha indovinato e ha 
+        selezionato la risposta verde',
+   
     
-    
-    'tot_correct' => 'Totale risposte corrette.',
-    'survey_each' => 'Sondaggi completati per ogni categoria.',
+    'tot_correct' => 'Totale risposte corrette',
+    'survey_each' => 'Sondaggi completati per ogni categoria',
     'recent_surv' => 'Sondaggi recenti',
+    'help_grafico_basso' => 'Questo grafico mostra i punteggi dei sondaggi completati dall\'utente. Sull\'asse
+        x ci sono i sondaggi mentre sull\'asse y ci sono i punteggi',
+    'help' => 'Aiuto',
+    'messaggio_vuoto' => 'Rispondi ad almeno un sondaggio per visualizzare le tue statistiche',
+    'scores' => 'Punteggi',
+       
     
     
     
@@ -58,7 +69,7 @@ return [
     'no_surveys' => 'Non ci sono sondaggi completabili',
     'show' => 'Mostra',
     'no_complet' => 'Non ci sono sondaggi completati',
-    'submit' => 'Invia',
+    'submit' => 'Compila',
     'overview' => 'Panoramica',
      'global' => 'Globale',
     'correct_answers' => 'Risposte giuste:',
@@ -66,8 +77,7 @@ return [
     'help' => 'Aiuto',
     'close' => 'Chiudi',
     'correct' => 'Correct',
-    'score_modal' => 'Il punteggio viene calcolato dalla somma del valore assoluto della differenza tra i valori scelti dall\'utente
-e i valori corretti, divisi per il numero di domande.',
+    'score_modal' => 'Il punteggio viene calcolato tenendo conto della distanza tra la risposta corretta e la risposta data. Il punteggio massimo è 100.',
     'unsign' => 'Rimuovi',
     'settings' => 'Impostazioni',
     'update_sett' => 'Aggiorna i tuoi dati',

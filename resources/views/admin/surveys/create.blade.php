@@ -279,6 +279,7 @@ Create survey
                             <button class="btn btn-outline-primary" onclick="submit()">
                                 Submit
                             </button>
+                            <p>* Mandatory fields</p>
                         </div>
                         <div class="col">
                             <a href="{{ route('admin.surveys.index') }}">
@@ -287,11 +288,6 @@ Create survey
                         </div>
                     </div>
                 </div> <!-- div di creazione modulo -->
-                <div class="row">
-                    <div class="col">
-                        <p>* Mandatory fields</p>
-                    </div>
-                </div>
                 <div name="aux">
                     <form id="aux_form" class="pt-3" action="{{ route('admin.surveys.store') }}" method="POST"  enctype="multipart/form-data">
                         @csrf 

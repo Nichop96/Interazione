@@ -162,7 +162,7 @@ function checkDate() {
     var year = dateControl.getFullYear();
 
     if ((currentYear - year) < 16) {
-        $('#dateInvalid').html('You have to be 16 or more.');
+        $('#dateInvalid').html('{{__('register.controllo_eta')}}');
     }
     return ((currentYear - year) >= 16);
 }
@@ -171,7 +171,7 @@ function checkDate() {
     var email=$('#email').val();
     var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
     if( !emailReg.test( email ) ) {
-        $('#emailInvalid').html('Email format is incorrect');
+        $('#emailInvalid').html('{{__('register.email_incorretta')}}');
         return false;
     } else {
         return true;

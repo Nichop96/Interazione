@@ -19,7 +19,7 @@
 
 @section('flags')
 <link rel="stylesheet" href="{{asset('public-part/css/flag.css')}}">
-<li class="nav-item"><a href="{{ url('locale/it') }}" ><i class="italy flag"></i><a href="{{ url('locale/en') }}" ><i class="uk flag"></i></li>
+<li class="nav-item"><a href="{{ url('locale/it') }}"><i class="italy flag"></i><a href="{{ url('locale/en') }}" ><i class="uk flag"></i></li>
 @endsection
 
 @section('left-navbar')
@@ -34,13 +34,13 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('user.surveys.index') }}">
                 <i class="mdi mdi-comment-question-outline menu-icon"></i>
-                <span class="menu-title">New {{__('indexes.surveys')}}</span>
+                <span class="menu-title">{{__('indexes.new_surveys')}}</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('user.surveys.indexCompleted') }}">
                 <i class="mdi mdi-comment-check-outline menu-icon"></i>
-                <span class="menu-title">Completed {{__('indexes.surveys')}}</span>
+                <span class="menu-title">{{__('indexes.completed_surveys')}}</span>
             </a>
         </li>
         <li class="nav-item">

@@ -167,7 +167,8 @@ Create module
                         <div class="col">
                             <button class="btn btn-outline-primary" onclick="submit()">
                                 Save module 
-                            </button>                            
+                            </button>      
+                            <p>* Mandatory fields</p>
                         </div>
                         <div class="col">
                             <a href="{{ route('admin.modules.index') }}">
@@ -175,12 +176,7 @@ Create module
                             </a>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <p>* Mandatory fields</p>
-                    </div>
-                </div>
+                </div>                
                 <!-- div di creazione modulo -->
                 <div name="aux">
                     <form id="aux_form" class="pt-3" action="{{ route('admin.modules.store') }}" method="POST" enctype="multipart/form-data">

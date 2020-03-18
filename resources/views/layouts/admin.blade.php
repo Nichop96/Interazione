@@ -6,6 +6,12 @@
 <img src="{{ asset('images/faces/admin.png') }}" alt="profile"/>
 @endsection
 
+@section('flags')
+<link rel="stylesheet" href="{{asset('public-part/css/flag.css')}}">
+<li class="nav-item"><a href="{{ url('locale/it') }}" ><i class="italy flag"></i><a href="{{ url('locale/en') }}" ><i class="uk flag"></i></li>
+@endsection
+
+
 @section('left-navbar')
 <nav class="sidebar sidebar-offcanvas position-fixed" id="sidebar">
 

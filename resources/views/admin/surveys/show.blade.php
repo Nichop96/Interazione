@@ -111,7 +111,7 @@ Survey show
                                         </div>
                                         <div class="modal-body">
                                             <p>
-                                                The correct answer is green colored.
+                                                The correct answer is green.
                                             </p>
                                         </div>
                                         <div class="modal-footer">

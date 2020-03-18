@@ -25,7 +25,7 @@ Completed Surveys
 
 <div class="content-wrapper">
     <div class="mr-md-3 mr-xl-5">
-        <h1 class=" text-primary">Completed Surveys</h1>
+        <h1 class=" text-primary">{{__('indexes.completed_surveys')}}</h1>
         <br>
     </div>
     <div class="row" id="complete">
@@ -54,7 +54,22 @@ Completed Surveys
         @endforeach
    
     @else
-    <h4 class="mb-md-0 text-info">{{__('indexes.no_complet')}}</h4>
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card border-primary mb-3">
+          <div class="card-body">
+            <h4 class="mb-md-0 text-info">
+                {{__('indexes.no_complet')}}
+                
+            </h4>
+            <div class="row">
+                <div class="col-3">
+                    
+                </div>
+                <img class="col-sm-6" src="{{asset('/images/surveys/default.jpg')}}" alt="default">
+            </div>
+          </div>
+        </div>
+    </div>
     @endif
     </div>
 </div> 

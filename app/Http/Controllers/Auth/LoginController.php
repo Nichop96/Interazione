@@ -32,10 +32,15 @@ class LoginController extends Controller
         if($user->hasAnyRole('Admin')) {
             return redirect()->intended('admin/index');
         } 
+        else{
 
         if($user->hasAnyRole('User')) {
             return redirect()->intended('user/index');
-        } 
+        }
+        else{
+            return "Ciao";
+        }
+        }
     }
 
     /**

@@ -30,7 +30,7 @@ class SurveysTableSeeder extends Seeder {
             'description' => 'Grana Padano Riserva 24 mesi, session: 22-03-2019',
             
             'category_id' => $cheeseCategory,
-            'fillable' => 0,
+            'fillable' => 1,
             'image' => 'grana.jpg'
         ]);
 
@@ -84,7 +84,7 @@ class SurveysTableSeeder extends Seeder {
             'description' => 'The Simpson: The Yellow Album',
             
             'category_id' => $musicCategory,
-            'fillable' => 1,
+            'fillable' => 0,
             'image' => 'simpson.jpg'
         ]);
         

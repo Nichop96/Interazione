@@ -36,17 +36,18 @@ class UsersTableSeeder extends Seeder
             'birth_date' => '1955-11-18',
         ]);
         
-        $user = User::create([
+        $user1 = User::create([
             'name' => 'Utente',
             'surname' => 'Utente', 
             'username' => 'Utente',
             'email' => 'utente@gmail.com',
-            'password' => bcrypt('utente0000'),         
+            'password' => bcrypt('utente1234'),         
             'birth_date' => '1955-11-18',
         ]);
         
         $admin->roles()->attach($adminRole);
         $user->roles()->attach($userRole);
+        $user1->roles()->attach($userRole);
         
         factory(ORC\User::class,40)->create();
     }

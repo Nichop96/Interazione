@@ -18,7 +18,7 @@ class SurveysQuestionsTableSeeder extends Seeder {
         $categories = Category::all();
         
         $categories[0]->start_id = 1; //vino
-        $categories[0]->end_id = 8;
+        $categories[0]->end_id = 6;
         
         $categories[3]->start_id = 17; //profumo
         $categories[3]->end_id = 20;

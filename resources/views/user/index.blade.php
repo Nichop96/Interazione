@@ -85,15 +85,14 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3 class="modal-title text-primary" id="exampleModalLongTitle">Help</h3>
+                        <h3 class="modal-title text-primary" id="exampleModalLongTitle">{{__('indexes.help')}} </h3>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <p>
-                            This graph shows the score of the surveys completed by the user. On the x axes, there are the scores.
-                            On the y axes, there are the name of the surveys. 
+                            {{__('indexes.help_grafico_basso')}} 
                         </p>
                     </div>
                     <div class="modal-footer">
@@ -108,10 +107,15 @@
         <div class="card border-primary mb-3">
           <div class="card-body">
             <h4>
-                Rispondi ad almeno un sondaggio per visualizzare le tue statistiche
+                {{__('indexes.messaggio_vuoto')}}
                 
             </h4>
-            <img class="col-sm-6" src="{{asset('/images/surveys/default.jpg')}}" alt="default"> 
+            <div class="row">
+                <div class="col-3">
+                    
+                </div>
+                <img class="col-sm-6" src="{{asset('/images/surveys/default.jpg')}}" alt="default">
+            </div>
           </div>
         </div>
     </div>
@@ -144,7 +148,7 @@
             }],
                     // These labels appear in the legend and in the tooltips when hovering different arcs
                     labels: [
-                            '{{__("indexes.correct")}}',
+                            '{{__('indexes.correct')}}',
                             '{{__("indexes.wrong")}}',
                     ]
             };
@@ -271,7 +275,7 @@
     },
     scaleLabel: {
         display: true,
-        labelString: 'Scores',
+        labelString: '{{__('indexes.scores')}}',
         fontSize: 16
       }
     }],
@@ -281,7 +285,7 @@
     },
     scaleLabel: {
         display: true,
-        labelString: 'Surveys',
+        labelString: '{{__('indexes.surveys')}}',
         fontSize: 16
       }
     }]

@@ -20,7 +20,7 @@ User edit
                         <div id="form">
                             <div class="form-group">
                                <br>
-                                <h4 for='name'>{{__('indexes.first')}}</h4>
+                                <h4 for='name'>{{__('indexes.first')}} *</h4>
                                  <br>
                                 <input id="name" type="text" class="form-control form-control-lg{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ old('name', $user->name ?: '' ) }}" name="name" placeholder="{{$user->name}}" required>
                                 @if ($errors->has('name'))
@@ -32,7 +32,7 @@ User edit
                             </div>
                             <div class='form-group'>
                                 <br>
-                                <h4 for='surname'>{{__('indexes.sur')}}</h4>
+                                <h4 for='surname'>{{__('indexes.sur')}} *</h4>
                                  <br>
                                 <input id="surname" type="text" class="form-control form-control-lg {{ $errors->has('surname') ? ' is-invalid' : '' }}" value="{{ old('surname', $user->surname ?: '' ) }}" name="surname" placeholder="{{$user->surname}}" required>
                                 @if ($errors->has('surname'))
@@ -44,7 +44,7 @@ User edit
 
                             <div class='form-group'>
                                 <br>
-                                <h4 for='username'>{{__('indexes.usern')}}</h4>
+                                <h4 for='username'>{{__('indexes.usern')}} *</h4>
                                  <br>
                                 <input id="username" type="text" class="form-control form-control-lg {{ $errors->has('username') ? ' is-invalid' : '' }}" value="{{ old('username', $user->username ?: '' ) }}" name="username" placeholder="{{$user->username}}" required>
                                 @if ($errors->has('username'))
@@ -56,7 +56,7 @@ User edit
 
                             <div class='form-group'>
                                 <br>
-                                <h4 for='email'>E-mail</h4>
+                                <h4 for='email'>E-mail *</h4>
                                  <br>
                                 <input id="email" type="email" class="form-control form-control-lg {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email', $user->email ?: '' ) }}" name="email" placeholder="{{$user->email}}" required>
                                 @if ($errors->has('email'))
@@ -95,7 +95,7 @@ User edit
                                 <div class="col">
                                     <div class="form-group">
                                         <br>
-                                        <h4 for='date'>{{__('indexes.bday')}}</h4>
+                                        <h4 for='date'>{{__('indexes.bday')}} *</h4>
                                          <br>
                                         <input type='date' class="form-control form-control-lg datepicker {{ $errors->has('birth_date') ? ' is-invalid' : '' }}" id="date_birth" name="birth_date" value="{{ old('birth_date', $user->birth_date) }}" required>
 
@@ -140,7 +140,7 @@ User edit
                                     </a>
                                 </div>
                             </div>
-
+                            * Campi obbligatori
                     </form>
                 </div>
             </div>
